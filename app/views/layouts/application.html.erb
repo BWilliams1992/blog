@@ -22,7 +22,8 @@
       </ul>
       <ul class="navbar-nav justify-content-end">
         <% if current_user %>
-          <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+          <span class="navbar-text">Logged in as: <%= current_user.username %></span>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, :class => 'nav-link' %>
         <% else %>
           <li class="nav-item">
             <%= link_to 'Sign in', new_user_session_path, :class => 'nav-link' %>

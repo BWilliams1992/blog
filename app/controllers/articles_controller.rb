@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    authorize! :edit, @article 
   end
 
   def create
