@@ -8,6 +8,8 @@
   <div style="border: 1px solid black; background-color: #add8e6">
 
     <h3> <%= question.content %> </h3>
+    <%= image_tag question.picture.variant(resize_to_limit: [200, 200]) if question.picture.present?   %>
+    <% image_tag question.picture if question.picture.present? %>
     <%= time_ago_in_words(question.created_at) %> ago by <%= question.user.username %>
   <br/>
     <% if can? :edit, question %>
