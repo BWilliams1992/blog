@@ -8,14 +8,25 @@ class Ability
     if user.admin?
 
       can :manage, Article
-
+      can :manage, Question
+      can :manage, Answer
     else
       can :destroy, Comment do |comment|
         comment.user_id == user.id
       end
 
       can :create, Comment
-
+      can :create, Question
+      can :destroy, Question do |question|
+       question.user_id == user.id
+      end
+      can :edit, Question do |question|
+       question.user_id == user.id
+      end
+      can :create, Answer
+      can :destroy, Answer do |answer|
+        answer.user_id == user.id
+      end
     end
 
     # Define abilities for the passed in user here. For example:
